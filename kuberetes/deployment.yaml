@@ -10,8 +10,10 @@
     containers:
       - name: pgstac
         image: ghcr.io/stac-utils/pgstac:v0.7.1
-        command: ["postgres"]
-        args: ["-N", "500"]
+        command: ["docker-entrypoint.sh"]
+        args: ["postgres", "-N", "500"]
+        securityContext:
+          runAsUser: 999
         ports:
           - containerPort: 5432
         env:
