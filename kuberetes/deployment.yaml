@@ -44,9 +44,9 @@
         - name: POSTGRES_HOST_WRITER
           value: "pgstac"
         - name: POSTGRES_PORT
-          value: 5432
+          value: "5432"
         - name: WEB_CONCURRENCY
-          value: 10
+          value: "10"
         - name: VSI_CACHE
           value: "TRUE"
         - name: GDAL_HTTP_MERGE_CONSECUTIVE_RANGES
@@ -54,8 +54,8 @@
         - name: GDAL_DISABLE_READDIR_ON_OPEN
           value: "EMPTY_DIR"
         - name: DB_MIN_CONN_SIZE
-          value: 1
+          value: "1"
         - name: DB_MAX_CONN_SIZE
-          value: 1
+          value: "1"
         - name: USE_API_HYDRATE
           value: "${USE_API_HYDRATE:-false}"
