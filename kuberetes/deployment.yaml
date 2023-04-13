@@ -35,9 +35,11 @@
         readinessProbe:
           exec:
             command:
+            - apt update
+            - apt install -y procps
             - if [ 1 -eq `ps aux |grep uvicorn|grep 8080 |wc -l` ]; then exit 0; else exit 1; fi
-          initialDelaySeconds: 5
-          periodSeconds: 5
+          initialDelaySeconds: 30
+          periodSeconds: 30
         ports:
           - containerPort: 8080
         env:
