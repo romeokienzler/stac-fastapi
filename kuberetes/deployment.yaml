@@ -32,7 +32,7 @@
       - name: stac-fastapi-pgstac
         image: ghcr.io/stac-utils/stac-fastapi:main-pgstac
         command: ["uvicorn", "stac_fastapi.pgstac.app:app", "--host", "0.0.0.0", "--port", "8080"]
-        readynessProbe:
+        readinessProbe:
           exec:
             command:
             - if [ 1 -eq `ps aux |grep uvicorn|grep 8080 |wc -l` ]; then exit 0; else exit 1; fi
