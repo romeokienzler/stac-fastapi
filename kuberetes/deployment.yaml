@@ -31,7 +31,7 @@
           value: "postgis"
       - name: stac-fastapi-pgstac
         image: ghcr.io/stac-utils/stac-fastapi:main-pgstac
-        command: ["uvicorn", "stac_fastapi.pgstac.app:app", "--host", "0.0.0.0", "--port", "8080"]
+        command: ["uvicorn", "stac_fastapi.pgstac.app:app", "--host", "0.0.0.0", "--port", "  "]
         ports:
           - containerPort: 8080
         env:
@@ -43,6 +43,8 @@
           value: "username"
         - name: POSTGRES_PASS
           value: "password"
+        - name: POSTGRES_DBNAME
+          value: "postgis"
         - name: POSTGRES_HOST_READER
           value: "pgstac"
         - name: POSTGRES_HOST_WRITER
