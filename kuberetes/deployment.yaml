@@ -64,7 +64,7 @@
         - name: DB_MAX_CONN_SIZE
           value: "1"
         - name: USE_API_HYDRATE
-          value: "TRUE"
+          value: "True"
 
 ---
 apiVersion: v1
