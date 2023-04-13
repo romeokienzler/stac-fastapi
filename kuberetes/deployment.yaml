@@ -31,6 +31,7 @@
           value: "postgis"
       - name: stac-fastapi-pgstac
         image: ghcr.io/stac-utils/stac-fastapi:main-pgstac
+        command: ["uvicorn", "stac_fastapi.pgstac.app:app", "--host", "0.0.0.0", "--port", "8080"]
         ports:
           - containerPort: 8080
         env:
