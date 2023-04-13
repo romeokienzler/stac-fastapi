@@ -1,0 +1,61 @@
+
+---
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: stac
+    labels:
+      app: stac
+  spec:
+    containers:
+      - name: pgstac
+        image: ghcr.io/stac-utils/pgstac:v0.7.1
+        command: ["postgres -N 500"]
+        ports:
+          - containerPort: 5439:5432
+        env:
+        - name: POSTGRES_USER
+          value: "username"
+        - name: POSTGRES_PASSWORD
+          value: "password"
+        - name: POSTGRES_DB
+          value: "postgis"
+        - name: PGUSER
+          value: "username"
+        - name: PGPASSWORD
+          value: "password"
+        - name: PGDATABASE
+          value: "postgis"
+      - name: stac-fastapi-pgstac
+        image: ghcr.io/stac-utils/stac-fastapi:main-pgstac
+        ports:
+          - containerPort: 8080
+        env:
+        - name: APP_HOST
+          value: "0.0.0.0"
+        - name: ENVIRONMENT
+          value: "local"
+        - name: POSTGRES_USER
+          value: "username"
+        - name: POSTGRES_PASS
+          value: "password"
+        - name: POSTGRES_HOST_READER
+          value: "pgstac"
+        - name: POSTGRES_HOST_WRITER
+          value: "pgstac"
+        - name: POSTGRES_PORT
+          value: 5432
+        - name: WEB_CONCURRENCY
+          value: 10
+        - name: VSI_CACHE
+          value: "TRUE"
+        - name: GDAL_HTTP_MERGE_CONSECUTIVE_RANGES
+          value: "YES"
+        - name: GDAL_DISABLE_READDIR_ON_OPEN
+          value: "EMPTY_DIR"
+        - name: DB_MIN_CONN_SIZE
+          value: 1
+        - name: DB_MAX_CONN_SIZE
+          value: 1
+        - name: USE_API_HYDRATE
+          value: "${USE_API_HYDRATE:-false}"
