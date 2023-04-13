@@ -54,9 +54,9 @@
         - name: POSTGRES_DBNAME
           value: "postgis"
         - name: POSTGRES_HOST_READER
-          value: "pgstac"
+          value: "localhost"
         - name: POSTGRES_HOST_WRITER
-          value: "pgstac"
+          value: "localhost"
         - name: POSTGRES_PORT
           value: "5432"
         - name: WEB_CONCURRENCY
